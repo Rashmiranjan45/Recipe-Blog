@@ -1,0 +1,77 @@
+<%- include('./partials/header') %>
+    body{
+    font-family: 'Baloo Bhai', cursive;
+    background-image:
+    url("https://images.pexels.com/photos/5717970/pexels-photo-5717970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-repeat: no-repeat;
+    background-size:cover;
+    opacity: 0.7;
+    }
+    </style>
+    </head>
+
+    <body>
+        <%- include('./partials/navbar') %>
+
+            <div class="container col-md-6 shadow-lg mt-5 p-4 text-white rounded-4 bg-dark">
+                <form action="/api/v1/recipe/update/<%= recipe._id %>"
+                    method="post" 
+                    enctype="multipart/form-data"
+                    >
+                    <h1 class="text-primary text-center">Yours Recipes</h1>
+                    <hr>
+                    <label 
+                        class="form-label" 
+                        for="recipeName"
+                        >
+                        Recipes Name:
+                    </label>
+                    <input 
+                        type="text" 
+                        name="recipeName" 
+                        value="<%= recipe.recipeName %>" 
+                        class="form-control bg-tertiary" 
+                        id="recipeName"
+                    />
+                    <label 
+                        class="form-label" 
+                        for="recipeDesc"
+                        >
+                        Recipes Description:
+                    </label>
+                    <textarea 
+                        class="form-control bg-tertiary" 
+                        name="recipeDesc" 
+                        cols="30" rows="5"
+                        id="recipeDesc"
+                        ><%= recipe.recipeDesc %>
+                    </textarea>
+                    <label 
+                        class="form-label"
+                        >
+                        Recipes By:
+                    </label>
+                    <input 
+                        type="text" 
+                        name="recipeBy" 
+                        class="form-control bg-tertiary"
+                    />
+                    <label 
+                        class="form-label" 
+                        for="recipeImage"
+                        >
+                        Recipe Image
+                    </label>
+                    <input 
+                        type="file" 
+                        name="recipeImage" 
+                        class="form-control bg-tertiary"
+                    />
+                    <button 
+                        class="btn btn-success w-100 mt-2"
+                        >
+                        Update Recipe
+                    </button>
+                </form>
+            </div>
+            <%- include('./partials/footer') %>

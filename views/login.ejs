@@ -1,0 +1,30 @@
+<%- include('./partials/header') %>
+        body {
+            font-family: 'Baloo Bhai', cursive;
+            background-image: url("https://images.unsplash.com/photo-1492892132812-a00a8b245c45?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.7;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+    
+    <div class="container shadow col-md-4 my-xxl-5 bg-dark rounded-5">
+        <form action="/api/v1/user/login" method="post">
+            <h1 class="text-center text-primary">Login user</h1>
+            <label for="" class="form-label">Email Id:</label>
+            <input type="email" class="form-control mb-2" name="email">
+            <label for="" class="form-label">Password</label>
+            <input type="password" class="form-control mb-2" name="password">
+            <p>You have no account go to<a href="/api/v1/user/signup">sign up</a></p>
+            <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">login</button>
+            </div>
+        </form>
+    </div>
+    <%- include('./partials/footer') %>

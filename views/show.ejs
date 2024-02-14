@@ -1,0 +1,50 @@
+
+<%- include('./partials/header') %>
+        body{
+            font-family: 'Baloo Bhai', cursive;
+            background: url("https://images.unsplash.com/photo-1642355008521-236f1d29d0a8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            background-size:cover;
+            opacity: 0.6;
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+
+    <div class="container m-5 col-sm-6 mx-auto ">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container col-lg-auto mt-5  text-center ">
+        <h1 class="bg-primary-subtle text-dark">
+            View Your Receipes
+        </h1>
+    </div>
+    <div class="container row mx-auto">
+        <% recipe.forEach((recipe, index)=> { %>
+            <div class="col">
+                <div class="card mb-4" style="width:18rem; height:600px">
+                    <img class="card-img-top" src="<%= recipe.recipeImage %>" width="150px" height="120px" alt="<%= recipe.recipeName %>">
+                    <div class="card-body ">
+                    <h3 class="card-title"><%= recipe.recipeName %></h3>
+                    <p class="card-text"><%= recipe.recipeDesc %></p>
+                    <a href="/api/v1/recipe/delete/<%= recipe._id %>" class="card-link btn btn-outline-danger mb-2">Delete</a>
+                    <a href="/api/v1/recipe/update/<%= recipe._id %>" class="card-link btn btn-outline-success mb-2">Update</a>
+                    <a href="/api/v1/recipe/view/<%= recipe._id %>" class="card-link btn btn-outline-info mb-2">View</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    
+    <%- include('./partials/footer') %>
+
+
+
+
+

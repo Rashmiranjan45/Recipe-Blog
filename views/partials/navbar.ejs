@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-primary-subtle ">
+    <div class="container-fluid ">
+        <a href="/api/v1/recipe/" class="navbar-brand">MyReceipe</a>
+        <button type="button" class="navbar-toggler dropdown-toggle" data-bs-target="#id1" data-bs-toggle="collapse"
+            aria-current="true" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="id1">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/api/v1/recipe/create" class="nav-link">Make Receipe</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/api/v1/recipe/show" class="nav-link" aria-current="page">View
+                        Receipes</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact us
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.linkedin.com/in/rashmiranjan-samal" class="dropdown-item">LinkdIn</a></li>
+                        <li><a href="https://github.com/Rashmiranjan45" class="dropdown-item">Github</a></li>
+                        <li><a href="#" class="dropdown-item">Instagram</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <% if (locals.user) { %>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
+                            <%= locals.user.fullName %>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/api/v1/user/logout" class="dropdown-item">Logout</a></li>
+                        </ul>
+                    </div>
+                    <% } else {%>
+                        <div class="nav-item d-flex">
+                            <a href="/api/v1/user/signup" class="nav-link text-black-50" aria-current="page">Signup</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/api/v1/user/login" class="nav-link text-black-50" aria-current="page">Login</a>
+                        </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<% if (locals.erro) { %>
+ <div class="container mt-4">
+    <div class="alert alert-danger"><%= locals.error %></div>
+ </div>
+<% } %>

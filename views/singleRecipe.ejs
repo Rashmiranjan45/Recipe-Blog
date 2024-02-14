@@ -1,0 +1,44 @@
+<%- include('./partials/header') %>
+    body{
+    font-family: 'Baloo Bhai', cursive;
+    }
+</style>
+</head>
+
+<body class="bg-dark">
+    <header>
+        <%- include('./partials/navbar') %>
+    </header>
+    <div class="container mt-4 row">
+        <div class="col-10">
+        <blockquote class="card-title text-white text-lg-start">Recipe By.</blockquote>
+        <img class="rounded-circle" src="<%= recipe.recipeBy.avatar %>" width="150px" alt="">
+        <p class="text-white text-sm">Name: <%= recipe.recipeBy.fullName %></p>
+        <p class="text-white text-sm">Email: <%= recipe.recipeBy.email %></p>
+        <h1 class="text-success text-xl-center"><%= recipe.recipeName %></h1>
+        <hr/>
+        <blockquote class="blockquote text-warning text-lg-center"><%= recipe.recipeDesc %></blockquote>
+        <hr>
+        <a href="http://localhost:4100/api/v1/recipe/update/singleRecipe.ejs" class="btn btn-outline-secondary">Download</a>
+        </div>
+        <div class="col-2">
+        <img class="rounded-5" src="<%= recipe.recipeImage %>" alt="<%= recipe.recipeName %>" width="400px" height="500px">
+        </div>
+    </div>
+    
+    <div class="container mt-3">
+        <h1 class="text-primary mb-0">Comments</h1>
+    
+        <!-- Authorize for to do comments -->
+            <form action="/api/v1/recipe/view/<%= recipe._id %>" method="post">
+                <label for="content" class="form-label">comment</label>
+                <input type="text" name="content" id="content" class="form-control">
+                <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Add Comments</button>
+            </form>
+                <!-- showing comments -->
+    </div>
+    <footer class="card-footer text-center text-black-50 my-0 ">
+        <p class="card-text">&copy;copyrights 2024 @rashmiranjan45
+        </p>
+    </footer>
+    <%- include('./partials/footer') %>
